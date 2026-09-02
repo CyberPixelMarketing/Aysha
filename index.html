@@ -223,7 +223,7 @@ html[dir=rtl] .brand .wm small{letter-spacing:0;font-size:.72rem}
 .burger.open span:nth-child(2){opacity:0}
 .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .nav-cta{display:none}
-.drawer{position:fixed;inset:72px 0 0 0;background:var(--navy-deep);z-index:55;transform:translateY(-8px);opacity:0;pointer-events:none;transition:.35s var(--ease);padding:2rem 1.5rem;overflow:auto}
+.drawer{position:fixed;inset:72px 0 0 0;background:var(--navy-deep);z-index:55;-webkit-overflow-scrolling:touch;transform:translateY(-8px);opacity:0;pointer-events:none;transition:.35s var(--ease);padding:2rem 1.5rem;overflow:auto}
 .drawer.open{opacity:1;transform:none;pointer-events:auto}
 .drawer ul{list-style:none;margin:0;padding:0}
 .drawer li a{display:block;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1.25rem;font-weight:600}
@@ -566,7 +566,9 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
       <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
-  <div class="drawer" id="drawer">
+</header>
+
+<div class="drawer" id="drawer">
     <ul>
       <li><a href="#about" data-i18n="nav_about">About</a></li>
       <li><a href="#expertise" data-i18n="nav_expertise">Expertise</a></li>
@@ -579,8 +581,7 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
       <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
     <a class="btn btn-gold" href="#" data-wa="general" data-i18n="nav_cta">Book a Consultation</a>
-  </div>
-</header>
+</div>
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="home">
