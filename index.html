@@ -126,7 +126,7 @@
       "mainEntity": [
         { "@type": "Question", "name": "What is professional coaching?", "acceptedAnswer": { "@type": "Answer", "text": "Professional coaching is a thinking partnership that enables individuals to develop awareness, explore possibilities, take responsibility and move toward meaningful action. It is not consulting, mentoring or simply giving advice." } },
         { "@type": "Question", "name": "What is the difference between a coach, a mentor and a consultant?", "acceptedAnswer": { "@type": "Answer", "text": "A consultant provides expert answers, a mentor shares personal experience, and a coach creates the structure and questions that help you reach your own decisions and own the results." } },
-        { "@type": "Question", "name": "What is coaching supervision?", "acceptedAnswer": { "@type": "Answer", "text": "Coaching supervision is a confidential, reflective professional space where coaches examine their practice, relationships, ethics and boundaries with a qualified supervisor, individually or in a group." } },
+        { "@type": "Question", "name": "What is coaching supervision?", "acceptedAnswer": { "@type": "Answer", "text": "Coaching supervision is a reflective professional space where coaches examine their practice, relationships, ethics and boundaries with a qualified supervisor, individually or in a group." } },
         { "@type": "Question", "name": "How is your organizational excellence work different from consulting?", "acceptedAnswer": { "@type": "Answer", "text": "Rather than handing over a report, Dr. Aysha works alongside internal teams while solutions are built, transferring knowledge so the organization can operate, improve and sustain results independently." } },
         { "@type": "Question", "name": "Do you deliver technical AI training?", "acceptedAnswer": { "@type": "Answer", "text": "Dr. Aysha's positioning is leadership, coaching and organizational transformation enabled by AI. Specialist technical experts join programs when deeper technical depth is required." } },
         { "@type": "Question", "name": "How do I start?", "acceptedAnswer": { "@type": "Answer", "text": "Send an enquiry through the form or WhatsApp with your area of interest. The first step is always a conversation." } }
@@ -433,6 +433,33 @@ html[dir=rtl] .step .n{font-family:var(--font-body);font-size:1.05rem}
 .topics span svg{width:14px;height:14px;color:var(--gold-text)}
 @media(min-width:900px){.speak-in{grid-template-columns:.9fr 1.1fr;align-items:center;gap:4rem}}
 
+/* ============ COURSES ============ */
+.courses{display:grid;gap:1.2rem}
+.ccard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem 1.4rem;display:flex;flex-direction:column;transition:.35s var(--ease);position:relative;overflow:hidden}
+.ccard::before{content:"";position:absolute;top:0;inset-inline-start:0;bottom:0;width:3px;background:linear-gradient(var(--gold),var(--gold-2));transform:scaleY(0);transform-origin:top;transition:.45s var(--ease)}
+.ccard:hover{transform:translateY(-5px);box-shadow:0 26px 46px -30px rgba(11,21,48,.45);border-color:transparent}
+.ccard:hover::before{transform:scaleY(1)}
+.ctags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem}
+.ctags span{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-text);background:var(--ivory);border-radius:999px;padding:.3rem .7rem}
+html[dir=rtl] .ctags span{letter-spacing:0;font-size:.8rem}
+.ccard h3{font-family:var(--font-body);font-size:1.12rem;font-weight:700;margin-bottom:.4rem}
+.ccard p{font-size:.92rem;color:var(--muted);flex:1}
+.ccard .btn{align-self:flex-start}
+.co-note{margin-top:2rem;text-align:center;color:var(--muted);font-size:.95rem}
+.co-note a{color:var(--gold-text);font-weight:700;border-bottom:1.5px solid var(--gold)}
+@media(min-width:700px){.courses{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1040px){.courses{grid-template-columns:repeat(3,1fr)}}
+
+/* ============ NEWSLETTER BAND ============ */
+.news{background:radial-gradient(110% 130% at 85% 0%,var(--navy-2) 0%,var(--navy) 55%,var(--navy-deep) 100%);color:#fff;overflow:hidden}
+.news-in{position:relative;display:grid;gap:1.6rem}
+.news .ic-big{width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;color:var(--gold-2)}
+.news .ic-big svg{width:32px;height:32px}
+.news h2{color:#fff}
+.news p{color:rgba(255,255,255,.78);max-width:60ch}
+.news-cta{display:flex;flex-wrap:wrap;gap:.8rem}
+@media(min-width:900px){.news-in{grid-template-columns:auto 1fr auto;align-items:center;gap:2.5rem}.news-cta{justify-content:flex-end}}
+
 /* ============ FAQ ============ */
 .faq{max-width:820px;margin-inline:auto;display:grid;gap:.8rem}
 details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 1.2rem;transition:.3s}
@@ -524,8 +551,8 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
         <li><a href="#about" data-i18n="nav_about">About</a></li>
         <li><a href="#expertise" data-i18n="nav_expertise">Expertise</a></li>
         <li><a href="#supervision" data-i18n="nav_supervision">Supervision</a></li>
-        <li><a href="#approach" data-i18n="nav_approach">Approach</a></li>
-        <li><a href="#work" data-i18n="nav_work">Work With Me</a></li>
+        <li><a href="#courses" data-i18n="nav_courses">Courses</a></li>
+        <li><a href="articles.html" data-i18n="nav_articles">Articles</a></li>
         <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
         <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
@@ -545,7 +572,9 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
       <li><a href="#expertise" data-i18n="nav_expertise">Expertise</a></li>
       <li><a href="#supervision" data-i18n="nav_supervision">Supervision</a></li>
       <li><a href="#approach" data-i18n="nav_approach">Approach</a></li>
+      <li><a href="#courses" data-i18n="nav_courses">Courses</a></li>
       <li><a href="#work" data-i18n="nav_work">Work With Me</a></li>
+      <li><a href="articles.html" data-i18n="nav_articles">Articles</a></li>
       <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
       <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
@@ -677,7 +706,7 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
         <span class="num">02</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3 data-i18n="ex2_t">Coaching Supervision</h3>
-        <p class="desc" data-i18n="ex2_p">A confidential, reflective space where coaches examine their practice, ethics and boundaries, individually or in a group. First of its kind in the Arab world.</p>
+        <p class="desc" data-i18n="ex2_p">A reflective space where coaches examine their practice, ethics and boundaries, individually or in a group. First of its kind in the Arab world.</p>
         <button class="more" type="button" aria-expanded="false"><span class="lbl" data-i18n="card_more">View more</span><span class="less" data-i18n="card_less">View less</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="panel"><div><ul>
           <li data-i18n="ex2_i1">Individual coaching supervision</li>
@@ -771,7 +800,7 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
       <span class="label reveal d1" data-i18n="sup_label">Coaching Supervision</span>
       <h2 class="reveal d1" data-i18n="sup_h2">Who Supports the Coach?</h2>
       <p class="reveal d2" data-i18n="sup_p1">Coaches create thinking space for others. But where does the coach go to think about their own practice?</p>
-      <p class="reveal d2" data-i18n="sup_p2">Coaching supervision creates a confidential, reflective professional space in which coaches examine their work, relationships, ethical questions, boundaries, challenges and development. It is not about right or wrong, it enables the coach to become more reflective, ethical, aware and professionally mature.</p>
+      <p class="reveal d2" data-i18n="sup_p2">Coaching supervision creates a reflective professional space in which coaches examine their work, relationships, ethical questions, boundaries, challenges and development. It is not about right or wrong, it enables the coach to become more reflective, ethical, aware and professionally mature.</p>
       <p class="reveal d3" data-i18n="sup_p3">Designed for certified coaches, ICF practitioners and corporate internal coaches who want to elevate their professional practice.</p>
       <div class="qs reveal d3">
         <h4 data-i18n="sup_qh">Questions coaches bring to supervision</h4>
@@ -879,7 +908,7 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4 4L19 6"/></svg><span data-i18n="ww3_i2">Leadership development &amp; Lead as a Coach</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4 4L19 6"/></svg><span data-i18n="ww3_i3">Customer experience, protocol &amp; AI enablement</span></li>
         </ul>
-        <a class="btn btn-navy btn-sm" href="#" data-wa="item" data-item="ww3_t"><span data-i18n="ww_cta3">Discuss a Project</span></a>
+        <a class="btn btn-navy btn-sm" href="#" data-wa="item" data-item="ww3_t"><span data-i18n="ww_cta3">Register Your Interest</span></a>
       </div>
       <div class="wcard reveal d3">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8"/></svg></div>
@@ -892,6 +921,68 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
         <a class="btn btn-navy btn-sm" href="#" data-wa="item" data-item="ww4_t"><span data-i18n="ww_cta4">Invite Dr. Aysha</span></a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ================= COURSES ================= -->
+<section id="courses">
+  <div class="wrap">
+    <div class="head center">
+      <span class="label reveal" data-i18n="co_label">Professional Development</span>
+      <h2 class="reveal d1" data-i18n="co_h2">Specialized Courses for Organizations &amp; Individuals</h2>
+      <p class="sub reveal d2" data-i18n="co_sub">Specialized training programmes delivered in Arabic or English, in person or online. New courses are added regularly. Register your interest and you will receive the details and upcoming dates.</p>
+    </div>
+
+    <!-- ===== COURSE CARDS: لإضافة دورة انسخ كتلة <article class="ccard"> كاملة والصقها ثم عدّل النصوص
+         To add a course: copy a whole <article class="ccard"> … </article> block, paste it and edit the text.
+         Remember to add the Arabic for any new data-i18n keys inside the I18N dictionary below. ===== -->
+    <div class="courses">
+
+      <article class="ccard reveal">
+        <div class="ctags"><span data-i18n="tag_org">Organizations</span><span data-i18n="tag_ind">Individuals</span></div>
+        <h3 data-i18n="co1_t">Lead as a Coach</h3>
+        <p data-i18n="co1_p">Leading through coaching: developing leaders who create thinking space, grow their people and lead with questions, not instructions.</p>
+        <a class="btn btn-navy btn-sm" href="#" data-wa="course" data-item="co1_t"><span data-i18n="co_cta">Register Your Interest</span></a>
+      </article>
+
+      <article class="ccard reveal d1">
+        <div class="ctags"><span data-i18n="tag_org">Organizations</span></div>
+        <h3 data-i18n="co2_t">Intensive Leadership Programme</h3>
+        <p data-i18n="co2_p">12 sessions across 12 weeks for cohorts of 12 to 18 leaders, combining executive coaching with UK ICF-level trainers and an Emirati leadership vision.</p>
+        <a class="btn btn-navy btn-sm" href="#" data-wa="course" data-item="co2_t"><span data-i18n="co_cta">Register Your Interest</span></a>
+      </article>
+
+      <article class="ccard reveal d2">
+        <div class="ctags"><span data-i18n="tag_coach">Coaches</span></div>
+        <h3 data-i18n="co3_t">Group Coaching Supervision</h3>
+        <p data-i18n="co3_p">A 15-session programme: 6 group sessions, 3 one-on-one sessions, 3 self-learning modules and 3 guided listening sessions, for certified and internal coaches.</p>
+        <a class="btn btn-navy btn-sm" href="#" data-wa="course" data-item="co3_t"><span data-i18n="co_cta">Register Your Interest</span></a>
+      </article>
+
+      <article class="ccard reveal">
+        <div class="ctags"><span data-i18n="tag_org">Organizations</span><span data-i18n="tag_ind">Individuals</span></div>
+        <h3 data-i18n="co4_t">Protocol, Etiquette &amp; Al Sanaa</h3>
+        <p data-i18n="co4_p">Official protocol, business etiquette and authentic Emirati Al Sanaa: executive presence, receiving VIPs, order of precedence and frontline conduct.</p>
+        <a class="btn btn-navy btn-sm" href="#" data-wa="course" data-item="co4_t"><span data-i18n="co_cta">Register Your Interest</span></a>
+      </article>
+
+      <article class="ccard reveal d1">
+        <div class="ctags"><span data-i18n="tag_org">Organizations</span><span data-i18n="tag_ind">Individuals</span></div>
+        <h3 data-i18n="co5_t">AI for Leaders &amp; Teams</h3>
+        <p data-i18n="co5_p">Practical, responsible AI for leaders, employees, coaches, trainers and customer-service teams: shorten time, lift productivity and turn data into solutions.</p>
+        <a class="btn btn-navy btn-sm" href="#" data-wa="course" data-item="co5_t"><span data-i18n="co_cta">Register Your Interest</span></a>
+      </article>
+
+      <article class="ccard reveal d2">
+        <div class="ctags"><span data-i18n="tag_youth">Schools &amp; Youth</span></div>
+        <h3 data-i18n="co6_t">Champion Mindset &amp; Youth Programmes</h3>
+        <p data-i18n="co6_p">Cambridge-aligned personal development for children, plus leadership, AI, project and marketing skills for students, youth and educators.</p>
+        <a class="btn btn-navy btn-sm" href="#" data-wa="course" data-item="co6_t"><span data-i18n="co_cta">Register Your Interest</span></a>
+      </article>
+
+    </div>
+    <!-- ===== END COURSE CARDS ===== -->
+    <p class="co-note reveal"><span data-i18n="co_note">New courses are added soon. Looking for something specific?</span> <a href="#" data-wa="general" data-i18n="co_note_cta">Tell us what interests you</a></p>
   </div>
 </section>
 
@@ -917,6 +1008,22 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
   </div>
 </section>
 
+<!-- ================= ARTICLES / NEWSLETTER ================= -->
+<section class="news" id="articles">
+  <div class="wrap news-in">
+    <div class="ic-big reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a2 2 0 0 1 2-2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M15 2v5h5"/><path d="M8 12h8M8 16h8M8 8h3"/></svg></div>
+    <div>
+      <span class="label reveal" style="color:var(--gold-2)" data-i18n="news_label">Coaching &amp; Leadership Newsletter</span>
+      <h2 class="reveal d1" data-i18n="news_h2">Knowledge That Moves Practice Forward</h2>
+      <p class="reveal d2" data-i18n="news_p">Original articles by Dr. Aysha on coaching, supervision, leadership and organizational excellence, published on LinkedIn and collected on the articles page.</p>
+    </div>
+    <div class="news-cta reveal d2">
+      <a class="btn btn-gold" href="articles.html"><span data-i18n="news_cta1">Browse the Articles</span></a>
+      <a class="btn btn-ghost" href="#" data-social="newsletter" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.5H3.5V21h3.4zM5.2 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM21 13.4c0-3.6-2-5.2-4.6-5.2-1.9 0-3 1-3.6 1.8V8.5h-3.4V21h3.4v-6.6c0-1.7.6-3 2.3-3 1.6 0 2.1 1.2 2.1 3V21H21z"/></svg><span data-i18n="news_cta2">Follow on LinkedIn</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= FAQ ================= -->
 <section id="faq">
   <div class="wrap">
@@ -927,7 +1034,7 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
     <div class="faq">
       <details class="reveal"><summary><span data-i18n="faq_q1">What is professional coaching?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary><p data-i18n="faq_a1">Professional coaching is a thinking partnership that enables you to develop awareness, explore possibilities, take responsibility and move toward meaningful action. It is not consulting, it is not mentoring, and it is not simply giving advice.</p></details>
       <details class="reveal d1"><summary><span data-i18n="faq_q2">Coach, mentor or consultant, what is the difference?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary><p data-i18n="faq_a2">A consultant brings expert answers. A mentor shares personal experience. A coach creates the structure and questions that help you reach your own decisions, and own the results. Much of Dr. Aysha's mission is correcting the confusion between these.</p></details>
-      <details class="reveal d2"><summary><span data-i18n="faq_q3">What is coaching supervision, and who is it for?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary><p data-i18n="faq_a3">Supervision is a confidential, reflective space where coaches examine their practice, relationships, ethics and boundaries with a qualified supervisor. It serves new and experienced coaches, ICF practitioners and corporate internal coaches, individually or in group cohorts.</p></details>
+      <details class="reveal d2"><summary><span data-i18n="faq_q3">What is coaching supervision, and who is it for?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary><p data-i18n="faq_a3">Supervision is a reflective space where coaches examine their practice, relationships, ethics and boundaries with a qualified supervisor. It serves new and experienced coaches, ICF practitioners and corporate internal coaches, individually or in group cohorts.</p></details>
       <details class="reveal d3"><summary><span data-i18n="faq_q4">How is your excellence work different from consulting?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary><p data-i18n="faq_a4">No report-and-leave. Dr. Aysha works alongside your internal team while solutions are built, so employees learn to operate, manage and improve the system independently, with periodic follow-up to assess sustainability.</p></details>
       <details class="reveal d4"><summary><span data-i18n="faq_q5">Do you deliver technical AI training?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary><p data-i18n="faq_a5">Dr. Aysha's positioning is leadership, coaching and organizational transformation enabled by AI, practical, responsible use for leaders, coaches, trainers and service teams. Specialist technical experts join when deeper technical depth is required.</p></details>
       <details class="reveal d5"><summary><span data-i18n="faq_q6">How do I start?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg></summary><p data-i18n="faq_a6">Send an enquiry through the form below or WhatsApp with your area of interest, coaching, supervision, an organizational project or a speaking engagement. The first step is always a conversation.</p></details>
@@ -980,14 +1087,12 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
         <p class="fnote" data-i18n="f_note">Your enquiry opens in WhatsApp ready to send, or in your email app if you choose Email.</p>
       </form>
       <div class="info">
-        <a class="crow reveal d1" href="#" data-wa="general"><div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.3-.7s-3.8-3.4-3.9-3.5c-.1-.2-1-1.3-1-2.4s.6-1.7.8-1.9c.2-.2.4-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.5s.6 1 1.3 1.6c.9.8 1.6 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.8.9c.2.1.4.2.4.3.1.1.1.5 0 .8z"/></svg></div><div><small data-i18n="ci_wa">WhatsApp Business</small><b data-cfg="phoneDisplay">+971 50 900 9807</b></div></a>
+        <a class="crow reveal d1" href="#" data-wa="general"><div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.3-.7s-3.8-3.4-3.9-3.5c-.1-.2-1-1.3-1-2.4s.6-1.7.8-1.9c.2-.2.4-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.5s.6 1 1.3 1.6c.9.8 1.6 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.8.9c.2.1.4.2.4.3.1.1.1.5 0 .8z"/></svg></div><div><small data-i18n="ci_wa">WhatsApp Business</small><b data-cfg="phoneDisplay">+971 50 139 9913</b></div></a>
         <a class="crow reveal d2" href="#" data-mail><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><small data-i18n="ci_email">Email</small><b data-cfg="email">info@nciuae.com</b></div></a>
         <div class="crow reveal d4"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><small data-i18n="ci_loc">Location</small><b class="ar" data-cfg-lang="location">Dubai, United Arab Emirates</b></div></div>
         <div class="socials reveal d4">
           <a href="#" data-social="linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.5H3.5V21h3.4zM5.2 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM21 13.4c0-3.6-2-5.2-4.6-5.2-1.9 0-3 1-3.6 1.8V8.5h-3.4V21h3.4v-6.6c0-1.7.6-3 2.3-3 1.6 0 2.1 1.2 2.1 3V21H21z"/></svg></a>
           <a href="#" data-social="instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-          <a href="#" data-social="x" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.2L4.6 21h-3l7.5-8.6L1.3 3h6.5l4.5 5.7zm-1.1 16.2h1.7L6.8 4.7H5z"/></svg></a>
-          <a href="#" data-social="youtube" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.8 4.8 12 4.8 12 4.8s-6.8 0-8.5.4a2.8 2.8 0 0 0-2 2C1 8.9 1 12 1 12s0 3.1.5 4.8a2.8 2.8 0 0 0 2 2c1.7.4 8.5.4 8.5.4s6.8 0 8.5-.4a2.8 2.8 0 0 0 2-2c.5-1.7.5-4.8.5-4.8s0-3.1-.5-4.8zM9.8 15V9l5.7 3z"/></svg></a>
         </div>
       </div>
     </div>
@@ -1009,6 +1114,8 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
           <li><a href="#expertise" data-i18n="nav_expertise">Expertise</a></li>
           <li><a href="#supervision" data-i18n="nav_supervision">Supervision</a></li>
           <li><a href="#approach" data-i18n="nav_approach">Approach</a></li>
+          <li><a href="#courses" data-i18n="nav_courses">Courses</a></li>
+          <li><a href="articles.html" data-i18n="nav_articles">Articles</a></li>
           <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
         </ul>
       </div>
@@ -1026,7 +1133,7 @@ html[dir=rtl] .ft h4{letter-spacing:0;font-size:.95rem}
       <div class="ft">
         <h4 data-i18n="ft_contact">Contact</h4>
         <ul>
-          <li><a href="#" data-wa="general" data-cfg="phoneDisplay">+971 50 900 9807</a></li>
+          <li><a href="#" data-wa="general" data-cfg="phoneDisplay">+971 50 139 9913</a></li>
           <li><a href="#" data-mail data-cfg="email">info@nciuae.com</a></li>
           <li><a href="#" data-social="linkedin" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><a href="#" data-social="instagram" target="_blank" rel="noopener">Instagram</a></li>
@@ -1060,9 +1167,9 @@ var CONFIG = {
   /* --- التواصل | Contact --------------------------------------------------
      رقم الواتساب: رمز الدولة + الرقم بدون + أو مسافات (971 = الإمارات)
      WhatsApp number: country code + number, no + or spaces (971 = UAE)          */
-  whatsapp     : '971509009807',
+  whatsapp     : '971501399913',
   /* الرقم كما يظهر للزائر | Number as shown to visitors */
-  phoneDisplay : '+971 50 900 9807',
+  phoneDisplay : '+971 50 139 9913',
   /* البريد الإلكتروني | Email */
   email        : 'info@nciuae.com',
 
@@ -1073,8 +1180,7 @@ var CONFIG = {
   social : {
     linkedin  : 'https://www.linkedin.com/in/dr-aysha-albusmait-icf-pcc-coaching-educator-supervisor-29a96b2/',
     instagram : 'https://www.instagram.com/dr.ayshaalbusmait',
-    x         : '',                                              /* e.g. https://x.com/username */
-    youtube   : ''                                               /* e.g. https://youtube.com/@channel */
+    newsletter: 'https://www.linkedin.com/newsletters/coaching-leadership-7471493064134623232'  /* نشرة لينكد إن | LinkedIn newsletter */
   },
 
   /* --- الرسائل المجهزة على واتساب | Pre-filled WhatsApp messages ------------
@@ -1084,7 +1190,9 @@ var CONFIG = {
     general : { en:'Hello Dr. Aysha, I would like to book a consultation.',
                 ar:'مرحباً د. عائشة، أرغب في حجز استشارة.' },
     item    : { en:'Hello Dr. Aysha, I would like to enquire about: {item}',
-                ar:'مرحباً د. عائشة، أرغب في الاستفسار عن: {item}' }
+                ar:'مرحباً د. عائشة، أرغب في الاستفسار عن: {item}' },
+    course  : { en:'Hello Dr. Aysha, I would like to register my interest in the course: {item}',
+                ar:'مرحباً د. عائشة، أرغب في تسجيل اهتمامي بدورة: {item}' }
   },
 
   /* --- الألوان | Brand colours (مستوحاة من صورة البروفايل: كحلي + ذهبي) ----- */
@@ -1114,11 +1222,11 @@ var I18N = {
   meta_title:'د. عائشة البوسميط | كوتش تنفيذي ICF PCC ومشرفة كوتشينج وخبيرة التميز المؤسسي | الإمارات',
   meta_desc:'د. عائشة البوسميط، خبيرة إماراتية في القيادة والتميز المؤسسي، كوتش تنفيذي معتمدة ICF PCC ومشرفة كوتشينج. كوتشينج تنفيذي، إشراف على الكوتشينج، جاهزية المؤسسات للتميز، القيادة بعيون إماراتية، البروتوكول والسنع، وتمكين الذكاء الاصطناعي في الإمارات.',
   brand_name:'د. عائشة البوسميط', brand_sub:'القيادة · الكوتشينج · التميز',
-  nav_about:'عن عائشة', nav_expertise:'مجالات الخبرة', nav_supervision:'الإشراف المهني', nav_approach:'المنهجية', nav_work:'اعمل معي', nav_faq:'الأسئلة الشائعة', nav_contact:'تواصل', nav_cta:'احجز استشارة',
+  nav_about:'عن عائشة', nav_courses:'الدورات', nav_articles:'المقالات', nav_expertise:'مجالات الخبرة', nav_supervision:'الإشراف المهني', nav_approach:'المنهجية', nav_work:'اعمل معي', nav_faq:'الأسئلة الشائعة', nav_contact:'تواصل', nav_cta:'احجز استشارة',
   wm:'عائشة', badge1:'ICF PCC', badge1s:'كوتش معتمدة', badge2:'+30', badge2s:'عاماً من القيادة',
   eyebrow1:'كوتش تنفيذي', eyebrow2:'مشرفة كوتشينج', eyebrow3:'الإمارات العربية المتحدة',
   hero_h1:'القيادة. الكوتشينج. <em>التميز.</em> الأثر.',
-  hero_tag:'نطوّر القادة. نرتقي بالكوتشز. نمكّن التميز.',
+  hero_tag:'نُطوّر القادة. نرتقي بالكوتشز. نُمكّن التميّز.',
   hero_p:'أساعد القيادات والكوتشز والمؤسسات على تعزيز قدراتهم، والارتقاء بالممارسة المهنية، وتحويل المعرفة إلى أداء مستدام، بخبرة ثلاثة عقود في القيادة المؤسسية، إلى جانب الكوتشينج المهني والإشراف على الكوتشينج والتميز المؤسسي.',
   hero_cta1:'استكشف مجالات خبرتي', hero_cta2:'احجز استشارة', hero_quote:'المعرفة يجب أن تقود إلى ممارسة أفضل.',
   tr1:'كوتش معتمدة ICF PCC', tr2:'مشرفة كوتشينج معتمدة', tr3:'مدربة بريطانية معتمدة (ماستر)', tr4:'دكتوراه · القيادة والتميز المؤسسي', tr5:'مؤسِّسة · معهد الأمم للكوتشينج', tr6:'مقيّمة جوائز التميز', tr7:'برامج شبابية بمعايير كامبريدج',
@@ -1135,7 +1243,7 @@ var I18N = {
   exp_label:'ستة مسارات رئيسية', exp_h2:'القيادة والتميز المؤسسي', exp_sub:'مظلة واحدة وستة مسارات مترابطة، من المعرفة إلى التطبيق، ومن الجاهزية إلى التميز.',
   ex1_t:'القيادة والكوتشينج التنفيذي', ex1_p:'الكوتشينج كما يجب أن يكون، شراكة تفكير مهنية لا نصائح. تطوير قادة يقودون بمنهجية الكوتشينج ونماذج القيادة الأصيلة.',
   ex1_i1:'كوتشينج تنفيذي وقيادي (بمعايير ICF PCC)', ex1_i2:'برامج قيادية مكثفة: 12 جلسة / 12 أسبوعاً', ex1_i3:'مجموعات من 12 إلى 18 قائداً مع مدربين بمستوى ICF من المملكة المتحدة', ex1_i4:'Lead as a Coach ومهارات الكوتشينج للقادة', ex1_i5:'الحضور التنفيذي والتواصل وبناء الثقة', ex1_i6:'المرأة في القيادة، والقادة الصاعدون، ورواد الأعمال',
-  ex2_t:'الإشراف على الكوتشينج', ex2_p:'مساحة سرية تأملية يراجع فيها الكوتش ممارسته وأخلاقياته وحدوده المهنية، فردياً أو جماعياً. الأول من نوعه في العالم العربي.',
+  ex2_t:'الإشراف على الكوتشينج', ex2_p:'مساحة تأملية يراجع فيها الكوتش ممارسته وأخلاقياته وحدوده المهنية، فردياً أو جماعياً. الأول من نوعه في العالم العربي.',
   ex2_i1:'إشراف فردي على الكوتشينج', ex2_i2:'دفعات إشراف جماعي', ex2_i3:'الممارسة التأملية والتأمل الأخلاقي', ex2_i4:'الحدود المهنية والحالات المعقدة', ex2_i5:'إشراف للكوتشز الجدد وذوي الخبرة', ex2_i6:'تطوير الكوتشز الداخليين في المؤسسات',
   ex3_t:'جاهزية المؤسسات للتميز', ex3_p:'الانتقال بالمؤسسة من أنظمة على الورق إلى مؤسسة مرجعية جاهزة للجوائز والمنافسة، مع نقل المعرفة إلى فريقك.',
   ex3_i1:'تقييم الجاهزية واكتشاف الفجوات', ex3_i2:'الهياكل والسياسات والإجراءات ومنهجيات العمل', ex3_i3:'أطر التميز والاستعداد للجوائز', ex3_i4:'المقارنات المعيارية وزيارات أفضل الممارسات الدولية', ex3_i5:'إعادة تصميم تجربة المتعامل وتميز الخدمة', ex3_i6:'بناء قدرات القيادات والموظفين',
@@ -1148,7 +1256,7 @@ var I18N = {
   card_more:'اعرف المزيد', card_less:'عرض أقل', card_cta:'ناقش هذا المسار',
   sup_first:'الأول من نوعه في العالم العربي', sup_label:'الإشراف على الكوتشينج', sup_h2:'من يدعم الكوتش؟',
   sup_p1:'يخلق الكوتش مساحة تفكير للآخرين. لكن أين يذهب الكوتش ليفكر في ممارسته هو؟',
-  sup_p2:'يوفّر الإشراف على الكوتشينج مساحة مهنية سرية وتأملية يراجع فيها الكوتش عمله وعلاقاته وأسئلته الأخلاقية وحدوده وتحدياته وتطوره. الأمر لا يتعلق بالصواب والخطأ، بل يمكّن الكوتش من أن يصبح أكثر تأملاً ووعياً ونضجاً مهنياً.',
+  sup_p2:'يوفّر الإشراف على الكوتشينج مساحة مهنية تأملية يراجع فيها الكوتش عمله وعلاقاته وأسئلته الأخلاقية وحدوده وتحدياته وتطوره. الأمر لا يتعلق بالصواب والخطأ، بل يمكّن الكوتش من أن يصبح أكثر تأملاً ووعياً ونضجاً مهنياً.',
   sup_p3:'مصمَّم للكوتشز المعتمدين وممارسي ICF والكوتشز الداخليين في المؤسسات الراغبين في الارتقاء بممارستهم المهنية.',
   sup_qh:'أسئلة يحملها الكوتشز إلى الإشراف',
   sup_q1:'هل أتعامل مع علاقة العميل هذه بالشكل المناسب؟', sup_q2:'لماذا أثّرت فيّ هذه الحالة تحديداً؟', sup_q3:'أين تقع حدودي المهنية؟', sup_q4:'ما الذي لا أراه في علاقة الكوتشينج هذه؟', sup_q5:'كيف أستمر في التطور بما يتجاوز التقنيات والشهادات؟',
@@ -1165,14 +1273,14 @@ var I18N = {
   ww_label:'اعمل مع د. عائشة', ww_h2:'كيف يمكنني مساعدتك؟', ww_p:'سواء كنت قائداً أو كوتش أو مؤسسة أو منظّم فعاليات، الخطوة الأولى دائماً هي حوار.',
   ww1_t:'للقادة والأفراد', ww1_i1:'كوتشينج تنفيذي', ww1_i2:'كوتشينج قيادي', ww1_i3:'الحضور التنفيذي والبروتوكول', ww_cta1:'احجز كوتشينج',
   ww2_t:'للكوتشز', ww2_i1:'إشراف جماعي على الكوتشينج', ww2_i2:'إشراف فردي', ww2_i3:'تطوير الكوتشز والذكاء الاصطناعي للكوتشز', ww_cta2:'استكشف الإشراف',
-  ww3_t:'للمؤسسات والجهات الحكومية', ww3_i1:'التميز المؤسسي والاستعداد للجوائز', ww3_i2:'تطوير القيادات وLead as a Coach', ww3_i3:'تجربة المتعامل والبروتوكول وتمكين الذكاء الاصطناعي', ww_cta3:'ناقش مشروعاً',
+  ww3_t:'للمؤسسات والجهات الحكومية', ww3_i1:'التميز المؤسسي والاستعداد للجوائز', ww3_i2:'تطوير القيادات وLead as a Coach', ww3_i3:'تجربة المتعامل والبروتوكول وتمكين الذكاء الاصطناعي', ww_cta3:'سجّل اهتمامك',
   ww4_t:'للفعاليات والإعلام', ww4_i1:'كلمات رئيسية وجلسات حوارية قيادية', ww4_i2:'إدارة جلسات وورش عمل', ww4_i3:'بودكاست ومقابلات إعلامية', ww_cta4:'ادعُ د. عائشة',
   sp_label:'المتحدثة والإعلام', sp_h2:'التحدث وإدارة الجلسات والقيادة الفكرية', sp_p:'تتحدث د. عائشة بالعربية والإنجليزية في القيادة والكوتشينج والإشراف والتميز ومستقبل العمل، للجهات الحكومية والمؤسسية والجمهور المهني.', sp_cta:'ادعُ د. عائشة للتحدث',
   sp1:'كلمات رئيسية', sp2:'جلسات حوارية قيادية', sp3:'حوارات الكوتشينج والإشراف', sp4:'منتديات التميز المؤسسي', sp5:'الذكاء الاصطناعي ومستقبل العمل', sp6:'فعاليات حكومية ومؤسسية', sp7:'فعاليات المرأة في القيادة', sp8:'بودكاست ومقابلات إعلامية',
   faq_label:'الكوتشينج كما يجب أن يكون', faq_h2:'الأسئلة الشائعة',
   faq_q1:'ما هو الكوتشينج المهني؟', faq_a1:'الكوتشينج المهني شراكة تفكير تمكّنك من تطوير الوعي واستكشاف الاحتمالات وتحمّل المسؤولية والتحرك نحو فعل ذي معنى. هو ليس استشارة، وليس إرشاداً، وليس مجرد تقديم نصائح.',
   faq_q2:'كوتش أم مرشد أم مستشار، ما الفرق؟', faq_a2:'المستشار يقدّم إجابات الخبير. المرشد يشارك تجربته الشخصية. أما الكوتش فيصنع الهيكل والأسئلة التي تساعدك على الوصول إلى قراراتك بنفسك، وتحمّل نتائجها. وجزء كبير من رسالة د. عائشة هو تصحيح الخلط بين هذه المفاهيم.',
-  faq_q3:'ما هو الإشراف على الكوتشينج ولمن هو؟', faq_a3:'الإشراف مساحة سرية تأملية يراجع فيها الكوتش ممارسته وعلاقاته وأخلاقياته وحدوده مع مشرف مؤهل. يخدم الكوتشز الجدد وذوي الخبرة وممارسي ICF والكوتشز الداخليين في المؤسسات، فردياً أو ضمن مجموعات.',
+  faq_q3:'ما هو الإشراف على الكوتشينج ولمن هو؟', faq_a3:'الإشراف مساحة تأملية يراجع فيها الكوتش ممارسته وعلاقاته وأخلاقياته وحدوده مع مشرف مؤهل. يخدم الكوتشز الجدد وذوي الخبرة وممارسي ICF والكوتشز الداخليين في المؤسسات، فردياً أو ضمن مجموعات.',
   faq_q4:'كيف يختلف عملك في التميز عن الاستشارات؟', faq_a4:'لا تقرير ثم انسحاب. تعمل د. عائشة مع فريقك الداخلي أثناء بناء الحلول، ليتعلم الموظفون تشغيل النظام وإدارته وتحسينه بشكل مستقل، مع متابعة دورية لتقييم الاستدامة.',
   faq_q5:'هل تقدّمين تدريباً تقنياً في الذكاء الاصطناعي؟', faq_a5:'تموضع د. عائشة هو القيادة والكوتشينج والتحول المؤسسي المدعوم بالذكاء الاصطناعي، استخدام عملي ومسؤول للقادة والكوتشز والمدربين وفرق الخدمة. ويُستعان بمتخصصين تقنيين عند الحاجة إلى عمق تقني أكبر.',
   faq_q6:'كيف أبدأ؟', faq_a6:'أرسل استفسارك عبر النموذج أدناه أو عبر واتساب مع تحديد مجال اهتمامك، كوتشينج، إشراف، مشروع مؤسسي، أو مشاركة كمتحدثة. الخطوة الأولى دائماً هي حوار.',
@@ -1181,6 +1289,19 @@ var I18N = {
   opt0:'اختر المجال…', opt1:'كوتشينج تنفيذي / قيادي', opt2:'إشراف فردي على الكوتشينج', opt3:'إشراف جماعي على الكوتشينج', opt4:'التميز المؤسسي', opt5:'تطوير القيادات', opt6:'تدريب الذكاء الاصطناعي', opt7:'البروتوكول والحضور التنفيذي', opt8:'برامج المدارس والشباب', opt9:'التحدث / الإعلام', opt10:'شراكة', opt11:'أخرى',
   f_msg:'الرسالة', f_pref:'طريقة التواصل المفضلة', pref1:'واتساب', pref2:'بريد إلكتروني', pref3:'اتصال هاتفي', f_submit:'أرسل الاستفسار', f_note:'سيُفتح استفسارك في واتساب جاهزاً للإرسال، أو في تطبيق البريد إذا اخترت البريد الإلكتروني.',
   ph_name:'اسمك الكامل', ph_org:'الشركة / الجهة', ph_pos:'دورك الوظيفي', ph_country:'الإمارات العربية المتحدة', ph_msg:'أخبرني باختصار عن هدفك أو سياقك',
+  co_label:'التطوير المهني', co_h2:'الدورات التخصصية للمؤسسات والأفراد',
+  co_sub:'برامج تدريبية تخصصية تُقدَّم بالعربية أو الإنجليزية، حضورياً أو عن بُعد. تُضاف دورات جديدة باستمرار. سجّل اهتمامك وستصلك التفاصيل والمواعيد القادمة.',
+  co_cta:'سجّل اهتمامك', tag_org:'للمؤسسات', tag_ind:'للأفراد', tag_coach:'للكوتشز', tag_youth:'للمدارس والشباب',
+  co1_t:'Lead as a Coach | القيادة بأسلوب الكوتشينج', co1_p:'القيادة من خلال الكوتشينج: إعداد قادة يصنعون مساحة تفكير لفرقهم، وينمّون موظفيهم، ويقودون بالأسئلة لا بالتعليمات.',
+  co2_t:'البرنامج القيادي المكثف', co2_p:'12 جلسة خلال 12 أسبوعاً لمجموعات من 12 إلى 18 قائداً، يجمع الكوتشينج التنفيذي مع مدربين بمستوى ICF من المملكة المتحدة برؤية قيادية إماراتية.',
+  co3_t:'الإشراف الجماعي على الكوتشينج', co3_p:'برنامج من 15 جلسة: 6 جلسات جماعية، و3 جلسات فردية، و3 وحدات تعلم ذاتي، و3 جلسات استماع موجّه، للكوتشز المعتمدين والداخليين.',
+  co4_t:'البروتوكول والإتيكيت والسنع', co4_p:'البروتوكول الرسمي وإتيكيت الأعمال والسنع الإماراتي الأصيل: الحضور التنفيذي، واستقبال كبار الشخصيات، وترتيب الأسبقية، وسلوك الصفوف الأمامية.',
+  co5_t:'الذكاء الاصطناعي للقادة وفرق العمل', co5_p:'استخدام عملي ومسؤول للذكاء الاصطناعي للقادة والموظفين والكوتشز والمدربين وفرق خدمة المتعاملين: اختصار الوقت، ورفع الإنتاجية، وتحويل البيانات إلى حلول.',
+  co6_t:'عقل البطل وبرامج الشباب', co6_p:'تطوير شخصي للأطفال بمعايير كامبريدج، إضافة إلى مهارات القيادة والذكاء الاصطناعي وإعداد المشاريع والتسويق للطلبة والشباب والمعلمين.',
+  co_note:'دورات جديدة تُضاف قريباً. تبحث عن موضوع محدد؟', co_note_cta:'أخبرنا بما يهمك',
+  news_label:'نشرة الكوتشينج والقيادة', news_h2:'معرفة تنقل الممارسة إلى الأمام',
+  news_p:'مقالات أصلية بقلم د. عائشة في الكوتشينج والإشراف المهني والقيادة والتميز المؤسسي، تُنشر على لينكد إن وتُجمع في صفحة المقالات.',
+  news_cta1:'تصفح المقالات', news_cta2:'تابع النشرة على لينكد إن',
   ci_wa:'واتساب للأعمال', ci_email:'البريد الإلكتروني', ci_loc:'الموقع',
   ft_tag:'خبيرة القيادة والتميز المؤسسي · كوتش ICF PCC · مشرفة كوتشينج. أساعد القيادات والكوتشز والمؤسسات على الانتقال من المعرفة إلى التطبيق، ومن الجاهزية إلى التميز.',
   ft_links:'استكشف', ft_pillars:'المسارات', ft_contact:'تواصل', ft_rights:'جميع الحقوق محفوظة.',
@@ -1224,7 +1345,7 @@ var WA_ITEMS_EN = { sup_ind:'Individual Coaching Supervision', sup_grp:'Group Co
   }
   function waUrl(el){
     var type=el.getAttribute('data-wa'), tpl=(CONFIG.waMsg[type]||CONFIG.waMsg.general)[lang];
-    if(type==='item') tpl=tpl.replace('{item}',itemName(el.getAttribute('data-item')));
+    var it=el.getAttribute('data-item'); if(it) tpl=tpl.replace('{item}',itemName(it));
     return 'https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(tpl);
   }
   function wireWA(){

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<!-- ============================================================================
+   ┌──────────────────────────────────────────────────────────────────────────┐
+   │  ARTICLES PAGE | صفحة المقالات                                            │
+   │                                                                          │
+   │  1) Contact details + links live in CONFIG (first <script> at the end).   │
+   │     بيانات التواصل والروابط في كتلة CONFIG أسفل الصفحة.                     │
+   │                                                                          │
+   │  2) TO ADD AN ARTICLE | لإضافة مقال:                                       │
+   │     Open the ARTICLES list (right under CONFIG), copy one { … } block,    │
+   │     paste it at the TOP of the list, and edit the five values:            │
+   │        img     : article image file or URL (e.g. 'article1.jpg')          │
+   │        title   : the article title                                        │
+   │        excerpt : two or three lines from the article                      │
+   │        url     : the article link on LinkedIn                             │
+   │        date    : 'YYYY-MM-DD'                                             │
+   │     افتح قائمة ARTICLES أسفل الصفحة، انسخ كتلة { … } واحدة، والصقها في      │
+   │     أعلى القائمة، ثم عدّل الصورة والعنوان والمقتطف والرابط والتاريخ.          │
+   │                                                                          │
+   │  3) AUTOMATIC UPDATES | التحديث التلقائي:                                  │
+   │     LinkedIn does not allow pages to read newsletter content directly.    │
+   │     If a server job is set up later to export the newsletter to a JSON    │
+   │     file, put that file's URL in CONFIG.feedUrl and this page will load   │
+   │     and refresh from it automatically on every visit.                     │
+   │     لينكد إن لا يسمح بقراءة النشرة مباشرة من المتصفح. إذا تم لاحقاً إعداد     │
+   │     خدمة تصدّر النشرة إلى ملف JSON، ضع رابط الملف في CONFIG.feedUrl         │
+   │     وستُحمَّل المقالات وتتحدث تلقائياً عند كل زيارة.                          │
+   └──────────────────────────────────────────────────────────────────────────┘
+============================================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Articles | Dr. Aysha AlBusmait | Coaching &amp; Leadership Newsletter</title>
+<meta name="description" content="Articles by Dr. Aysha AlBusmait on coaching, coaching supervision, leadership and organizational excellence, from the Coaching &amp; Leadership newsletter on LinkedIn. مقالات د. عائشة البوسميط في الكوتشينج والإشراف المهني والقيادة والتميز المؤسسي.">
+<meta name="keywords" content="Dr. Aysha AlBusmait articles, coaching articles, coaching supervision articles, leadership articles UAE, Coaching and Leadership newsletter, مقالات د. عائشة البوسميط, مقالات الكوتشينج, مقالات القيادة, الإشراف على الكوتشينج">
+<meta name="author" content="Dr. Aysha AlBusmait">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.ayshaalbusmait.com/articles.html">
+<link rel="alternate" hreflang="en" href="https://www.ayshaalbusmait.com/articles.html?lang=en">
+<link rel="alternate" hreflang="ar" href="https://www.ayshaalbusmait.com/articles.html?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://www.ayshaalbusmait.com/articles.html">
+<link rel="icon" type="image/png" href="fav.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dr. Aysha AlBusmait">
+<meta property="og:title" content="Articles | Dr. Aysha AlBusmait">
+<meta property="og:description" content="Coaching, supervision, leadership and organizational excellence. Original articles from the Coaching &amp; Leadership newsletter.">
+<meta property="og:url" content="https://www.ayshaalbusmait.com/articles.html">
+<meta property="og:image" content="https://www.ayshaalbusmait.com/og.jpg">
+<meta name="theme-color" content="#16264E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Articles | Dr. Aysha AlBusmait",
+  "url": "https://www.ayshaalbusmait.com/articles.html",
+  "inLanguage": ["en", "ar"],
+  "about": ["Coaching", "Coaching Supervision", "Leadership", "Organizational Excellence"],
+  "author": { "@type": "Person", "name": "Dr. Aysha AlBusmait", "url": "https://www.ayshaalbusmait.com/" }
+}
+</script>
+<style>
+:root{
+  --navy:#16264E; --navy-2:#1F3565; --navy-deep:#0B1530;
+  --gold:#C9A34F; --gold-2:#E4CB8B; --gold-text:#8A6A22;
+  --ivory:#F6F2EA; --ivory-2:#EDE7DA; --white:#FFFFFF;
+  --ink:#1B1F2A; --muted:#5B6275; --line:rgba(22,38,78,.12);
+  --wa:#25D366;
+  --font-body:'Cairo', system-ui, sans-serif;
+  --font-display:'Cormorant Garamond', 'Cairo', serif;
+  --radius:18px; --wrap:1180px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--ivory);line-height:1.7;font-size:16px;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3{margin:0;line-height:1.2;font-weight:600;font-family:var(--font-display);color:var(--navy)}
+html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3{font-family:var(--font-body);font-weight:700}
+p{margin:0 0 1rem}
+.wrap{width:min(var(--wrap),100% - 2.5rem);margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.85rem 1.4rem;border-radius:999px;font-weight:700;font-size:.95rem;transition:transform .35s var(--ease),background .3s;white-space:nowrap;min-height:46px}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:var(--navy-deep)}
+.btn-gold:hover{background:var(--gold-2)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.45);color:#fff}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+html[dir=rtl] .flip{transform:scaleX(-1)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem;min-width:0}
+.brand img{height:44px;width:auto}
+.brand .mono{width:44px;height:44px;border-radius:12px;background:var(--navy);display:grid;place-items:center;flex:none}
+.brand .mono svg{width:26px;height:26px}
+.brand .wm{display:flex;flex-direction:column;line-height:1.1}
+.brand .wm b{font-family:var(--font-display);font-size:1.22rem;color:var(--navy);font-weight:700;white-space:nowrap}
+html[dir=rtl] .brand .wm b{font-family:var(--font-body);font-size:1.05rem}
+.brand .wm small{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text);font-weight:700;white-space:nowrap}
+html[dir=rtl] .brand .wm small{letter-spacing:0;font-size:.72rem}
+@media(max-width:520px){.brand .wm small{display:none}.brand .wm b{font-size:1.05rem}}
+.nav-ctrl{display:flex;align-items:center;gap:.6rem}
+.back{display:inline-flex;align-items:center;gap:.45rem;font-weight:700;font-size:.9rem;color:var(--navy);border:1.5px solid var(--line);border-radius:999px;padding:.45rem 1rem;min-height:40px;transition:.25s}
+.back:hover{border-color:var(--gold)}
+.back svg{width:16px;height:16px}
+.back .bl{display:none}
+@media(min-width:560px){.back .bl{display:inline}}
+.lang{display:inline-flex;align-items:center;gap:.4rem;border:1.5px solid var(--navy);border-radius:999px;padding:.4rem .9rem;font-weight:700;font-size:.85rem;color:var(--navy);min-height:40px}
+.lang svg{width:16px;height:16px}
+
+/* header strip */
+.phead{background:radial-gradient(120% 120% at 20% 0%,var(--navy-2) 0%,var(--navy) 50%,var(--navy-deep) 100%);color:#fff;padding:64px 0 72px;position:relative;overflow:hidden}
+.phead .wmark{position:absolute;inset:0;overflow:hidden;pointer-events:none;user-select:none;display:flex;flex-direction:column;justify-content:space-between}
+.phead .wmark span{font-family:var(--font-display);font-weight:700;font-size:clamp(4rem,14vw,9rem);line-height:.9;letter-spacing:.08em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);text-transform:uppercase}
+html[dir=rtl] .phead .wmark span{font-family:var(--font-body);letter-spacing:0}
+.phead .wmark span:nth-child(even){transform:translateX(-14%)}
+.phead-in{position:relative;z-index:1}
+.label{display:inline-flex;align-items:center;gap:.7rem;color:var(--gold-2);font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.9rem}
+html[dir=rtl] .label{letter-spacing:0;font-size:.95rem}
+.label::before{content:"";width:34px;height:1px;background:var(--gold)}
+.phead h1{color:#fff;font-size:clamp(2rem,6vw,3.4rem)}
+.phead p{color:rgba(255,255,255,.78);max-width:62ch;font-size:1.02rem;margin-top:.8rem}
+.phead .cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.4rem}
+.h-anim{opacity:0;transform:translateY(20px);animation:rise .8s var(--ease) forwards}
+.h-anim.d1{animation-delay:.1s}.h-anim.d2{animation-delay:.2s}.h-anim.d3{animation-delay:.3s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* grid */
+main{flex:1}
+.agrid{display:grid;gap:1.4rem;padding:56px 0 72px}
+@media(min-width:700px){.agrid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1040px){.agrid{grid-template-columns:repeat(3,1fr)}}
+.acard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:.35s var(--ease)}
+.acard:hover{transform:translateY(-6px);box-shadow:0 30px 50px -30px rgba(11,21,48,.45);border-color:rgba(201,163,79,.6)}
+.acard .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);position:relative;overflow:hidden}
+.acard .thumb img{width:100%;height:100%;object-fit:cover;transition:.6s var(--ease)}
+.acard:hover .thumb img{transform:scale(1.05)}
+.acard .thumb .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--gold-2)}
+.acard .thumb .ph svg{width:44px;height:44px;opacity:.8}
+.acard .abody{padding:1.3rem 1.3rem 1.4rem;display:flex;flex-direction:column;flex:1}
+.acard time{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-text);font-weight:700}
+html[dir=rtl] .acard time{letter-spacing:0;font-size:.85rem}
+.acard h3{font-size:1.15rem;margin:.45rem 0 .5rem;font-family:var(--font-body);font-weight:700;line-height:1.45}
+.acard p{font-size:.92rem;color:var(--muted);flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.acard .read{display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;font-weight:700;font-size:.9rem;color:var(--navy)}
+.acard .read svg{width:16px;height:16px;transition:.3s}
+.acard:hover .read svg{transform:translateX(4px)}
+html[dir=rtl] .acard:hover .read svg{transform:translateX(-4px) scaleX(-1)}
+
+/* empty state */
+.empty{background:#fff;border:1px dashed rgba(201,163,79,.7);border-radius:var(--radius);padding:3rem 1.5rem;text-align:center;margin:56px 0 72px;display:none}
+.empty.show{display:block}
+.empty .ic{width:64px;height:64px;border-radius:18px;background:var(--ivory);display:grid;place-items:center;color:var(--gold-text);margin:0 auto 1rem}
+.empty .ic svg{width:30px;height:30px}
+.empty h2{font-size:1.4rem;margin-bottom:.5rem}
+.empty p{color:var(--muted);max-width:52ch;margin-inline:auto}
+.empty .btn{margin-top:.6rem}
+
+/* footer */
+footer{background:var(--navy-deep);color:rgba(255,255,255,.75);padding:28px 0;font-size:.85rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;align-items:center}
+footer a{color:var(--gold-2);font-weight:600}
+.fsoc{display:flex;gap:.6rem}
+.fsoc a{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;color:#fff;transition:.25s}
+.fsoc a:hover{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+.fsoc svg{width:18px;height:18px}
+
+/* floating whatsapp */
+.float-wa{position:fixed;bottom:22px;inset-inline-end:18px;z-index:70;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.7);transition:.3s var(--ease)}
+.float-wa:hover{transform:scale(1.08)}
+.float-wa svg{width:30px;height:30px}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .h-anim,.reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="Dr. Aysha AlBusmait | Home">
+      <img src="logo.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+      <span class="mono" style="display:none" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M6 25 16 6l10 19" stroke="#E4CB8B" stroke-width="2.2" stroke-linejoin="round"/><path d="M10.5 18h11" stroke="#E4CB8B" stroke-width="2.2"/></svg></span>
+      <span class="wm"><b data-i18n="brand_name">Dr. Aysha AlBusmait</b><small data-i18n="brand_sub">Leadership · Coaching · Excellence</small></span>
+    </a>
+    <div class="nav-ctrl">
+      <a class="back" href="index.html"><svg class="flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="bl" data-i18n="back">Back to Home</span></a>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+        <span id="langLabel">العربية</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="phead">
+  <div class="wmark" aria-hidden="true"><span data-i18n="wm">Articles</span><span data-i18n="wm">Articles</span><span data-i18n="wm">Articles</span></div>
+  <div class="wrap phead-in">
+    <span class="label h-anim" data-i18n="ph_label">Coaching &amp; Leadership Newsletter</span>
+    <h1 class="h-anim d1" data-i18n="ph_h1">Knowledge That Moves Practice Forward</h1>
+    <p class="h-anim d2" data-i18n="ph_p">Original articles by Dr. Aysha AlBusmait on coaching, coaching supervision, leadership and organizational excellence. Every article opens on LinkedIn, where you can follow the newsletter to receive new editions directly.</p>
+    <div class="cta h-anim d3">
+      <a class="btn btn-gold" href="#" data-social="newsletter" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.5H3.5V21h3.4zM5.2 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM21 13.4c0-3.6-2-5.2-4.6-5.2-1.9 0-3 1-3.6 1.8V8.5h-3.4V21h3.4v-6.6c0-1.7.6-3 2.3-3 1.6 0 2.1 1.2 2.1 3V21H21z"/></svg><span data-i18n="ph_cta">Follow the Newsletter</span></a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="agrid" id="agrid"></div>
+    <div class="empty" id="empty">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a2 2 0 0 1 2-2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M15 2v5h5"/><path d="M8 12h8M8 16h8M8 8h3"/></svg></div>
+      <h2 data-i18n="empty_h">Articles are on their way</h2>
+      <p data-i18n="empty_p">The latest editions of the Coaching &amp; Leadership newsletter will appear here. Until then, you can read and follow all articles directly on LinkedIn.</p>
+      <a class="btn btn-gold" href="#" data-social="newsletter" target="_blank" rel="noopener"><span data-i18n="empty_cta">Read on LinkedIn</span></a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span data-year>2026</span> <span data-i18n="brand_name">Dr. Aysha AlBusmait</span>. <span data-i18n="rights">All rights reserved.</span></span>
+    <div class="fsoc">
+      <a href="#" data-social="linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.5H3.5V21h3.4zM5.2 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM21 13.4c0-3.6-2-5.2-4.6-5.2-1.9 0-3 1-3.6 1.8V8.5h-3.4V21h3.4v-6.6c0-1.7.6-3 2.3-3 1.6 0 2.1 1.2 2.1 3V21H21z"/></svg></a>
+      <a href="#" data-social="instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" href="#" data-wa aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.3-.7s-3.8-3.4-3.9-3.5c-.1-.2-1-1.3-1-2.4s.6-1.7.8-1.9c.2-.2.4-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.5s.6 1 1.3 1.6c.9.8 1.6 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.8.9c.2.1.4.2.4.3.1.1.1.5 0 .8z"/></svg>
+</a>
+
+<script>
+/* ============================================================================
+   ███ CONFIG | لوحة التحكم ███
+============================================================================ */
+var CONFIG = {
+  whatsapp : '971501399913',
+  email    : 'info@nciuae.com',
+  social : {
+    linkedin  : 'https://www.linkedin.com/in/dr-aysha-albusmait-icf-pcc-coaching-educator-supervisor-29a96b2/',
+    instagram : 'https://www.instagram.com/dr.ayshaalbusmait',
+    newsletter: 'https://www.linkedin.com/newsletters/coaching-leadership-7471493064134623232'
+  },
+  waMsg : { en:'Hello Dr. Aysha, I read your articles and would like to get in touch.',
+            ar:'مرحباً د. عائشة، قرأت مقالاتك وأرغب في التواصل.' },
+  /* رابط ملف JSON للتحديث التلقائي (يُترك فارغاً إن لم يتوفر) | see the note at the top of the file
+     Optional JSON feed URL for automatic updates (leave '' if not available)   */
+  feedUrl : ''
+};
+
+/* ============================================================================
+   ███ ARTICLES | المقالات ███
+   أحدث مقال يوضع في أعلى القائمة. انسخ كتلة { … } والصقها لإضافة مقال جديد.
+   Newest article goes at the TOP. Copy one { … } block and paste to add.
+   ----------------------------------------------------------------------------
+   TEMPLATE | نموذج:
+   { img:'article1.jpg',
+     title:'Article title here | عنوان المقال هنا',
+     excerpt:'Two or three lines from the article. | سطران أو ثلاثة من المقال.',
+     url:'https://www.linkedin.com/pulse/....',
+     date:'2026-09-01' },
+============================================================================ */
+var ARTICLES = [
+];
+
+/* ============================================================================
+   ما بعد هذا السطر برمجة، لا حاجة لتعديله | Below this line is code
+============================================================================ */
+var I18N = {
+  meta_title:'المقالات | د. عائشة البوسميط | نشرة الكوتشينج والقيادة',
+  meta_desc:'مقالات د. عائشة البوسميط في الكوتشينج والإشراف المهني والقيادة والتميز المؤسسي، من نشرة الكوتشينج والقيادة على لينكد إن.',
+  brand_name:'د. عائشة البوسميط', brand_sub:'القيادة · الكوتشينج · التميز',
+  back:'العودة للرئيسية', wm:'مقالات',
+  ph_label:'نشرة الكوتشينج والقيادة', ph_h1:'معرفة تنقل الممارسة إلى الأمام',
+  ph_p:'مقالات أصلية بقلم د. عائشة البوسميط في الكوتشينج والإشراف المهني والقيادة والتميز المؤسسي. كل مقال يُفتح على لينكد إن حيث يمكنك متابعة النشرة لتصلك الإصدارات الجديدة مباشرة.',
+  ph_cta:'تابع النشرة',
+  empty_h:'المقالات في الطريق إليكم',
+  empty_p:'ستظهر هنا أحدث إصدارات نشرة الكوتشينج والقيادة. حتى ذلك الحين يمكنكم قراءة جميع المقالات ومتابعتها مباشرة على لينكد إن.',
+  empty_cta:'اقرأ على لينكد إن',
+  read:'اقرأ المقال', rights:'جميع الحقوق محفوظة.'
+};
+var READ_EN='Read the article';
+
+(function(){
+  'use strict';
+  var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var META_EN={title:document.title, desc:$('meta[name=description]').getAttribute('content')};
+  var lang='en';
+  function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function read(k){try{return localStorage.getItem(k)}catch(e){return null}}
+
+  function applyConfig(){
+    $$('[data-social]').forEach(function(el){var u=CONFIG.social[el.getAttribute('data-social')]; if(u){el.href=u}else{el.style.display='none'}});
+    $$('[data-year]').forEach(function(el){el.textContent=new Date().getFullYear()});
+  }
+  function wireWA(){
+    $$('[data-wa]').forEach(function(el){el.href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(CONFIG.waMsg[lang]); el.target='_blank'; el.rel='noopener'});
+  }
+
+  /* ---------- articles ---------- */
+  function fmtDate(d){
+    var dt=new Date(d+'T00:00:00'); if(isNaN(dt)) return d;
+    try{return new Intl.DateTimeFormat(lang==='ar'?'ar-AE':'en-GB',{day:'numeric',month:'long',year:'numeric'}).format(dt)}catch(e){return d}
+  }
+  function render(list){
+    var grid=$('#agrid'), empty=$('#empty');
+    grid.innerHTML='';
+    list=(list||[]).slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'')});
+    if(!list.length){ empty.classList.add('show'); return; }
+    empty.classList.remove('show');
+    list.forEach(function(a,i){
+      var card=document.createElement('a');
+      card.className='acard reveal'; card.href=a.url||CONFIG.social.newsletter; card.target='_blank'; card.rel='noopener';
+      var th=document.createElement('div'); th.className='thumb';
+      if(a.img){
+        var im=document.createElement('img'); im.src=a.img; im.alt=a.title||''; im.loading='lazy';
+        im.onerror=function(){im.remove(); th.appendChild(ph())};
+        th.appendChild(im);
+      } else { th.appendChild(ph()); }
+      var body=document.createElement('div'); body.className='abody';
+      if(a.date){ var t=document.createElement('time'); t.dateTime=a.date; t.textContent=fmtDate(a.date); body.appendChild(t); }
+      var h=document.createElement('h3'); h.textContent=a.title||''; body.appendChild(h);
+      var p=document.createElement('p'); p.textContent=a.excerpt||''; body.appendChild(p);
+      var r=document.createElement('span'); r.className='read';
+      r.innerHTML='<span></span><svg class="flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+      r.firstChild.textContent=(lang==='ar')?I18N.read:READ_EN;
+      body.appendChild(r);
+      card.appendChild(th); card.appendChild(body); grid.appendChild(card);
+      setTimeout(function(){card.classList.add('in')}, 60*i);
+    });
+    function ph(){var d=document.createElement('div'); d.className='ph'; d.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 22V4a2 2 0 0 1 2-2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M15 2v5h5"/><path d="M8 12h8M8 16h8M8 8h3"/></svg>'; return d}
+  }
+  function load(){
+    if(!CONFIG.feedUrl){ render(ARTICLES); return; }
+    /* cache-busts hourly so a server-generated feed (e.g. refreshed daily at 9:00) is picked up */
+    var bust=new Date(); bust=''+bust.getFullYear()+bust.getMonth()+bust.getDate()+bust.getHours();
+    fetch(CONFIG.feedUrl+(CONFIG.feedUrl.indexOf('?')>-1?'&':'?')+'v='+bust)
+      .then(function(r){return r.json()})
+      .then(function(j){render(Array.isArray(j)?j:(j.articles||ARTICLES))})
+      .catch(function(){render(ARTICLES)});
+  }
+
+  /* ---------- language ---------- */
+  function setLang(l){
+    lang=(l==='ar')?'ar':'en';
+    var html=document.documentElement;
+    html.lang=lang; html.dir=(lang==='ar')?'rtl':'ltr';
+    $$('[data-i18n]').forEach(function(el){
+      var k=el.getAttribute('data-i18n');
+      if(!el.hasAttribute('data-en')) el.setAttribute('data-en',el.innerHTML);
+      if(lang==='ar'){ if(I18N[k]!==undefined) el.innerHTML=I18N[k]; }
+      else el.innerHTML=el.getAttribute('data-en');
+    });
+    document.title=(lang==='ar')?I18N.meta_title:META_EN.title;
+    $('meta[name=description]').setAttribute('content',(lang==='ar')?I18N.meta_desc:META_EN.desc);
+    $('#langLabel').textContent=(lang==='ar')?'English':'العربية';
+    $('#langBtn').setAttribute('aria-label',(lang==='ar')?'Switch to English':'التبديل إلى العربية');
+    wireWA(); store('lang',lang); load();
+  }
+  function detectLang(){
+    var q=(location.search.match(/[?&]lang=(ar|en)/i)||[])[1]; if(q) return q.toLowerCase();
+    var h=location.hash.toLowerCase(); if(h==='#ar'||h==='#en') return h.slice(1);
+    var s=read('lang'); if(s==='ar'||s==='en') return s;
+    return (/^ar/i.test(navigator.language||''))?'ar':'en';
+  }
+  $('#langBtn').addEventListener('click',function(){setLang(lang==='ar'?'en':'ar')});
+
+  applyConfig(); setLang(detectLang());
+})();
+</script>
+</body>
+</html>
