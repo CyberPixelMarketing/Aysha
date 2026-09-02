@@ -20,13 +20,14 @@
    │     أعلى القائمة، ثم عدّل الصورة والعنوان والمقتطف والرابط والتاريخ.          │
    │                                                                          │
    │  3) AUTOMATIC UPDATES | التحديث التلقائي:                                  │
-   │     LinkedIn does not allow pages to read newsletter content directly.    │
-   │     If a server job is set up later to export the newsletter to a JSON    │
-   │     file, put that file's URL in CONFIG.feedUrl and this page will load   │
-   │     and refresh from it automatically on every visit.                     │
-   │     لينكد إن لا يسمح بقراءة النشرة مباشرة من المتصفح. إذا تم لاحقاً إعداد     │
-   │     خدمة تصدّر النشرة إلى ملف JSON، ضع رابط الملف في CONFIG.feedUrl         │
-   │     وستُحمَّل المقالات وتتحدث تلقائياً عند كل زيارة.                          │
+   │     LinkedIn blocks reading newsletter content directly, so the page      │
+   │     can auto-load articles from a GOOGLE SHEET instead: fill one row per  │
+   │     article, publish the sheet to the web as CSV, and paste its link in   │
+   │     CONFIG.sheetUrl (full steps are written next to it below). The page   │
+   │     then refreshes from the sheet automatically on every visit.           │
+   │     لينكد إن يمنع قراءة النشرة مباشرة، لذا تُحمَّل المقالات تلقائياً من       │
+   │     جدول جوجل شيت: صف واحد لكل مقال، ثم «النشر على الويب» بصيغة CSV،        │
+   │     وضع الرابط في CONFIG.sheetUrl (الخطوات كاملة مكتوبة بجانبه أدناه).       │
    └──────────────────────────────────────────────────────────────────────────┘
 ============================================================================ -->
 <meta charset="UTF-8">
@@ -256,8 +257,24 @@ var CONFIG = {
   },
   waMsg : { en:'Hello Dr. Aysha, I read your articles and would like to get in touch.',
             ar:'مرحباً د. عائشة، قرأت مقالاتك وأرغب في التواصل.' },
-  /* رابط ملف JSON للتحديث التلقائي (يُترك فارغاً إن لم يتوفر) | see the note at the top of the file
-     Optional JSON feed URL for automatic updates (leave '' if not available)   */
+  /* ═══ GOOGLE SHEET AUTO-FEED | التحديث التلقائي عبر جوجل شيت ═══════════════
+     1) Create a Google Sheet with EXACTLY these column headers in row 1:
+            date | title | excerpt | url | img
+        أنشئ جدول جوجل شيت وضع في الصف الأول هذه العناوين بالضبط:
+            date | title | excerpt | url | img
+     2) Each article = one row. date as YYYY-MM-DD. img can be a filename
+        next to this page (article1.jpg) or a full image URL. Newest rows
+        can go anywhere, the page sorts by date automatically.
+        كل مقال في صف واحد، والتاريخ بصيغة YYYY-MM-DD، والصورة اسم ملف بجانب
+        الصفحة أو رابط كامل. الترتيب تلقائي حسب التاريخ.
+     3) In the Sheet: File ← Share ← Publish to web ← choose "Comma-separated
+        values (.csv)" ← Publish, then copy the link and paste it below.
+        من الجدول: ملف ← مشاركة ← النشر على الويب ← اختر CSV ← نشر،
+        ثم انسخ الرابط وألصقه هنا:                                             */
+  sheetUrl : '',
+
+  /* بديل متقدم: رابط ملف JSON من خدمة خلفية (يُترك فارغاً إن لم يتوفر)
+     Advanced alternative: JSON feed from a backend job ('' if not used)       */
   feedUrl : ''
 };
 
@@ -274,6 +291,21 @@ var CONFIG = {
      date:'2026-09-01' },
 ============================================================================ */
 var ARTICLES = [
+  { img:'article1.jpg',
+    title:'الإشراف على الكوتشينج في العالم العربي',
+    excerpt:'قراءة في واقع الإشراف المهني على الكوتشينج في منطقتنا العربية، والرحلة من الرؤية إلى الممارسة. من نشرة الكوتشينج والقيادة.',
+    url:'https://www.linkedin.com/pulse/%D8%A7%D9%84%D8%A5%D8%B4%D8%B1%D8%A7%D9%81-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%83%D9%88%D8%AA%D8%B4%D9%8A%D9%86%D8%AC-%D9%81%D9%8A-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A-%D9%85%D9%86-%D8%A7%D9%84%D8%B1%D8%A4%D9%8A%D8%A9-%D8%A5%D9%84%D9%89-dxkqf/',
+    date:'' },
+  { img:'article2.jpg',
+    title:'ما وراء مدونة الأخلاقيات',
+    excerpt:'كيف يساهم الإشراف على الكوتشينج في بناء ممارسة مهنية تتجاوز الالتزام الشكلي بمدونة الأخلاقيات. من نشرة الكوتشينج والقيادة.',
+    url:'https://www.linkedin.com/pulse/%D9%85%D8%A7-%D9%88%D8%B1%D8%A7%D8%A1-%D9%85%D8%AF%D9%88%D9%86%D8%A9-%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82%D9%8A%D8%A7%D8%AA-%D9%83%D9%8A%D9%81-%D9%8A%D8%B3%D8%A7%D9%87%D9%85-%D8%A7%D9%84%D8%A5%D8%B4%D8%B1%D8%A7%D9%81-%D9%81%D9%8A-%D8%A8%D9%86%D8%A7%D8%A1-gnxvf/',
+    date:'' },
+  { img:'article3.jpg',
+    title:'التراحم مع الذات: القوة الهادئة',
+    excerpt:'عن التراحم مع الذات كقوة هادئة تغيّر علاقتنا بأنفسنا وبمن حولنا. من نشرة الكوتشينج والقيادة.',
+    url:'https://www.linkedin.com/pulse/%D8%A7%D9%84%D8%AA%D8%B1%D8%A7%D8%AD%D9%85-%D9%85%D8%B9-%D8%A7%D9%84%D8%B0%D8%A7%D8%AA-%D8%A7%D9%84%D9%82%D9%88%D8%A9-%D8%A7%D9%84%D9%87%D8%A7%D8%AF%D8%A6%D8%A9-%D8%A7%D9%84%D8%AA%D9%8A-%D8%AA%D8%BA%D9%8A%D8%B1-%D8%B9%D9%84%D8%A7%D9%82%D8%AA%D9%86%D8%A7-hyihf/',
+    date:'' },
 ];
 
 /* ============================================================================
@@ -343,14 +375,40 @@ var READ_EN='Read the article';
     });
     function ph(){var d=document.createElement('div'); d.className='ph'; d.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 22V4a2 2 0 0 1 2-2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M15 2v5h5"/><path d="M8 12h8M8 16h8M8 8h3"/></svg>'; return d}
   }
+  function parseCSV(text){
+    var rows=[],row=[],cur='',q=false;
+    for(var i=0;i<text.length;i++){
+      var ch=text[i];
+      if(q){ if(ch==='"'){ if(text[i+1]==='"'){cur+='"';i++} else q=false; } else cur+=ch; }
+      else if(ch==='"') q=true;
+      else if(ch===','){ row.push(cur); cur=''; }
+      else if(ch==='\n'||ch==='\r'){ if(ch==='\r'&&text[i+1]==='\n')i++; row.push(cur); cur=''; if(row.length>1||row[0]!=='')rows.push(row); row=[]; }
+      else cur+=ch;
+    }
+    if(cur!==''||row.length){ row.push(cur); rows.push(row); }
+    if(!rows.length) return [];
+    var head=rows[0].map(function(s){return s.trim().toLowerCase()});
+    return rows.slice(1).map(function(r){
+      var o={}; head.forEach(function(k,idx){o[k]=(r[idx]||'').trim()}); return o;
+    }).filter(function(o){return o.title||o.url});
+  }
+  function bust(u){ var d=new Date(),v=''+d.getFullYear()+d.getMonth()+d.getDate()+d.getHours(); return u+(u.indexOf('?')>-1?'&':'?')+'v='+v; }
   function load(){
-    if(!CONFIG.feedUrl){ render(ARTICLES); return; }
-    /* cache-busts hourly so a server-generated feed (e.g. refreshed daily at 9:00) is picked up */
-    var bust=new Date(); bust=''+bust.getFullYear()+bust.getMonth()+bust.getDate()+bust.getHours();
-    fetch(CONFIG.feedUrl+(CONFIG.feedUrl.indexOf('?')>-1?'&':'?')+'v='+bust)
-      .then(function(r){return r.json()})
-      .then(function(j){render(Array.isArray(j)?j:(j.articles||ARTICLES))})
-      .catch(function(){render(ARTICLES)});
+    /* Priority: Google Sheet CSV, then JSON feed, then the inline ARTICLES list.
+       Cache-busts hourly so new sheet rows appear on the next visit. */
+    if(CONFIG.sheetUrl){
+      fetch(bust(CONFIG.sheetUrl)).then(function(r){return r.text()})
+        .then(function(t){var list=parseCSV(t); render(list.length?list:ARTICLES)})
+        .catch(function(){render(ARTICLES)});
+      return;
+    }
+    if(CONFIG.feedUrl){
+      fetch(bust(CONFIG.feedUrl)).then(function(r){return r.json()})
+        .then(function(j){render(Array.isArray(j)?j:(j.articles||ARTICLES))})
+        .catch(function(){render(ARTICLES)});
+      return;
+    }
+    render(ARTICLES);
   }
 
   /* ---------- language ---------- */
