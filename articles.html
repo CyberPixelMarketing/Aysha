@@ -19,15 +19,13 @@
    │     افتح قائمة ARTICLES أسفل الصفحة، انسخ كتلة { … } واحدة، والصقها في      │
    │     أعلى القائمة، ثم عدّل الصورة والعنوان والمقتطف والرابط والتاريخ.          │
    │                                                                          │
-   │  3) AUTOMATIC UPDATES | التحديث التلقائي:                                  │
-   │     LinkedIn blocks reading newsletter content directly, so the page      │
-   │     can auto-load articles from a GOOGLE SHEET instead: fill one row per  │
-   │     article, publish the sheet to the web as CSV, and paste its link in   │
-   │     CONFIG.sheetUrl (full steps are written next to it below). The page   │
-   │     then refreshes from the sheet automatically on every visit.           │
-   │     لينكد إن يمنع قراءة النشرة مباشرة، لذا تُحمَّل المقالات تلقائياً من       │
-   │     جدول جوجل شيت: صف واحد لكل مقال، ثم «النشر على الويب» بصيغة CSV،        │
-   │     وضع الرابط في CONFIG.sheetUrl (الخطوات كاملة مكتوبة بجانبه أدناه).       │
+   │  3) AUTOMATIC SYNC WITH LINKEDIN | المزامنة التلقائية مع لينكد إن:       │
+   │     Set up the included "linkedin-newsletter-sync.gs" script (10 min,     │
+   │     steps inside it) and paste its URL in CONFIG.feedUrl. New newsletter  │
+   │     editions then appear here daily at 9:00, and the refresh button      │
+   │     syncs on demand. Articles listed in ARTICLES always stay.            │
+   │     جهّز سكربت المزامنة المرفق وضع رابطه في CONFIG.feedUrl، فتظهر         │
+   │     الإصدارات الجديدة تلقائياً يومياً الساعة 9:00، ويزامن زر التحديث فوراً. │
    └──────────────────────────────────────────────────────────────────────────┘
 ============================================================================ -->
 <meta charset="UTF-8">
@@ -155,6 +153,29 @@ html[dir=rtl] .acard time{letter-spacing:0;font-size:.85rem}
 .acard:hover .read svg{transform:translateX(4px)}
 html[dir=rtl] .acard:hover .read svg{transform:translateX(-4px) scaleX(-1)}
 
+/* embedded widget */
+.embed-slot{display:none}
+body.has-embed .embed-slot{display:block;padding:48px 0 72px;min-height:420px}
+body.has-embed .sk-ww-linkedin-newsletter{font-family:var(--font-body)!important}
+body.has-embed .embed-slot a{color:var(--navy)}
+body.has-embed .agrid,body.has-embed .empty,body.has-embed #refreshBtn,body.has-embed #rstatus{display:none!important}
+.embed-slot iframe{width:100%;border:0}
+
+/* refresh */
+.btn-refresh{border:1.5px solid rgba(255,255,255,.45);color:#fff}
+.btn-refresh:hover{border-color:var(--gold-2);background:rgba(255,255,255,.06)}
+.btn-refresh[disabled]{opacity:.75;cursor:wait;transform:none}
+.btn-refresh.busy svg{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rstatus{display:flex;align-items:center;gap:.55rem;margin-top:1rem;font-size:.88rem;color:rgba(255,255,255,.72);min-height:1.5em}
+.rstatus .dot{width:8px;height:8px;border-radius:50%;background:var(--gold-2);flex:none}
+.rstatus.ok .dot{background:#5BD38A}
+.rstatus.warn .dot{background:#F0B45B}
+.rstatus:empty{display:none}
+.acard.is-new{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,163,79,.25)}
+.acard .newtag{position:absolute;top:.8rem;inset-inline-start:.8rem;background:var(--gold);color:var(--navy-deep);font-size:.72rem;font-weight:800;padding:.25rem .65rem;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
+html[dir=rtl] .acard .newtag{letter-spacing:0;font-size:.8rem}
+
 /* empty state */
 .empty{background:#fff;border:1px dashed rgba(201,163,79,.7);border-radius:var(--radius);padding:3rem 1.5rem;text-align:center;margin:56px 0 72px;display:none}
 .empty.show{display:block}
@@ -213,12 +234,28 @@ footer a{color:var(--gold-2);font-weight:600}
     <p class="h-anim d2" data-i18n="ph_p">Original articles by Dr. Aysha AlBusmait on coaching, coaching supervision, leadership and organizational excellence. Every article opens on LinkedIn, where you can follow the newsletter to receive new editions directly.</p>
     <div class="cta h-anim d3">
       <a class="btn btn-gold" href="#" data-social="newsletter" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.5H3.5V21h3.4zM5.2 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM21 13.4c0-3.6-2-5.2-4.6-5.2-1.9 0-3 1-3.6 1.8V8.5h-3.4V21h3.4v-6.6c0-1.7.6-3 2.3-3 1.6 0 2.1 1.2 2.1 3V21H21z"/></svg><span data-i18n="ph_cta">Follow the Newsletter</span></a>
+      <button class="btn btn-refresh" id="refreshBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg><span data-i18n="rf_btn">Check for New Articles</span></button>
     </div>
+    <div class="rstatus h-anim d3" id="rstatus" role="status" aria-live="polite"></div>
   </div>
 </div>
 
 <main>
   <div class="wrap">
+    <!-- ════════════════════════════════════════════════════════════════════
+         LINKEDIN NEWSLETTER WIDGET | ودجت نشرة لينكد إن
+         Paste the embed code from SociableKIT (or Elfsight / Tagembed)
+         between the two lines below. When a widget is pasted here it shows
+         the newsletter editions automatically, and the manual article cards
+         and the refresh button are hidden. Leave it empty to keep the cards.
+         الصق كود التضمين من SociableKIT بين السطرين أدناه. عند لصقه تظهر
+         مقالات النشرة تلقائياً وتختفي البطاقات اليدوية وزر التحديث.
+    ═════════════════════════════════════════════════════════════════════ -->
+    <div class="embed-slot" id="embedSlot">
+      <!-- PASTE EMBED CODE BELOW | الصق كود التضمين هنا -->
+      <div class="sk-ww-linkedin-newsletter" data-embed-id="25722814"></div><script src="https://widgets.sociablekit.com/linkedin-newsletter/widget.js" defer></script>
+      <!-- PASTE EMBED CODE ABOVE -->
+    </div>
     <div class="agrid" id="agrid"></div>
     <div class="empty show" id="empty">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a2 2 0 0 1 2-2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M15 2v5h5"/><path d="M8 12h8M8 16h8M8 8h3"/></svg></div>
@@ -257,25 +294,20 @@ var CONFIG = {
   },
   waMsg : { en:'Hello Dr. Aysha, I read your articles and would like to get in touch.',
             ar:'مرحباً د. عائشة، قرأت مقالاتك وأرغب في التواصل.' },
-  /* ═══ GOOGLE SHEET AUTO-FEED | التحديث التلقائي عبر جوجل شيت ═══════════════
-     1) Create a Google Sheet with EXACTLY these column headers in row 1:
-            date | title | excerpt | url | img
-        أنشئ جدول جوجل شيت وضع في الصف الأول هذه العناوين بالضبط:
-            date | title | excerpt | url | img
-     2) Each article = one row. date as YYYY-MM-DD. img can be a filename
-        next to this page (article1.jpg) or a full image URL. Newest rows
-        can go anywhere, the page sorts by date automatically.
-        كل مقال في صف واحد، والتاريخ بصيغة YYYY-MM-DD، والصورة اسم ملف بجانب
-        الصفحة أو رابط كامل. الترتيب تلقائي حسب التاريخ.
-     3) In the Sheet: File ← Share ← Publish to web ← choose "Comma-separated
-        values (.csv)" ← Publish, then copy the link and paste it below.
-        من الجدول: ملف ← مشاركة ← النشر على الويب ← اختر CSV ← نشر،
-        ثم انسخ الرابط وألصقه هنا:                                             */
-  sheetUrl : '',
+  /* ═══ LINKEDIN NEWSLETTER SYNC | مزامنة نشرة لينكد إن ════════════════════
+     Paste the Web app URL from the "linkedin-newsletter-sync.gs" script here
+     (it ends with /exec). New newsletter editions then appear automatically
+     every morning at 9:00, and the "Check for New Articles" button syncs
+     instantly. Setup steps are written at the top of that script file.
+     ضع هنا رابط Web app الخاص بسكربت المزامنة (ينتهي بـ /exec). بعدها تظهر
+     إصدارات النشرة الجديدة تلقائياً كل صباح الساعة 9:00، وزر «تحقق من
+     المقالات الجديدة» يزامن فوراً. خطوات الإعداد مكتوبة أعلى ملف السكربت.   */
+  feedUrl : '',
 
-  /* بديل متقدم: رابط ملف JSON من خدمة خلفية (يُترك فارغاً إن لم يتوفر)
-     Advanced alternative: JSON feed from a backend job ('' if not used)       */
-  feedUrl : ''
+  /* Alternative (manual list): a Google Sheet published to the web as CSV
+     with the columns date | title | excerpt | url | img. Used only when
+     feedUrl is empty. | بديل يدوي: جدول جوجل منشور بصيغة CSV.               */
+  sheetUrl : ''
 };
 
 /* ============================================================================
@@ -347,9 +379,15 @@ var I18N = {
   empty_h:'المقالات في الطريق إليكم',
   empty_p:'ستظهر هنا أحدث إصدارات نشرة الكوتشينج والقيادة. حتى ذلك الحين يمكنكم قراءة جميع المقالات ومتابعتها مباشرة على لينكد إن.',
   empty_cta:'اقرأ على لينكد إن',
-  read:'اقرأ المقال', rights:'جميع الحقوق محفوظة.'
+  read:'اقرأ المقال', rights:'جميع الحقوق محفوظة.',
+  rf_btn:'تحقق من المقالات الجديدة'
 };
 var READ_EN='Read the article';
+/* Status messages for the refresh button | رسائل زر التحديث */
+var RF = {
+  en:{ busy:'Checking for new articles…', fresh:'{n} new article(s) added', upto:'You are up to date', saved:'Showing the latest saved articles', fail:'Could not reach the feed. Showing saved articles.', at:'Last checked {t}', isnew:'New', count:'{n} articles' },
+  ar:{ busy:'جاري البحث عن مقالات جديدة…', fresh:'تمت إضافة {n} مقال جديد', upto:'المقالات محدّثة', saved:'يتم عرض أحدث المقالات المحفوظة', fail:'تعذّر الوصول إلى مصدر المقالات. يتم عرض المقالات المحفوظة.', at:'آخر تحقق {t}', isnew:'جديد', count:'{n} مقالات' }
+};
 
 (function(){
   'use strict';
@@ -372,6 +410,7 @@ var READ_EN='Read the article';
     var dt=new Date(d+'T00:00:00'); if(isNaN(dt)) return d;
     try{return new Intl.DateTimeFormat(lang==='ar'?'ar-AE':'en-GB',{day:'numeric',month:'long',year:'numeric'}).format(dt)}catch(e){return d}
   }
+  var CURRENT=[], NEWURLS={};
   function render(list){
     var grid=$('#agrid'), empty=$('#empty');
     grid.innerHTML='';
@@ -380,8 +419,9 @@ var READ_EN='Read the article';
     empty.classList.remove('show');
     list.forEach(function(a,i){
       var card=document.createElement('a');
-      card.className='acard reveal'; card.href=a.url||CONFIG.social.newsletter; card.target='_blank'; card.rel='noopener';
+      card.className='acard reveal'+(NEWURLS[a.url]?' is-new':''); card.href=a.url||CONFIG.social.newsletter; card.target='_blank'; card.rel='noopener';
       var th=document.createElement('div'); th.className='thumb';
+      if(NEWURLS[a.url]){ var nt=document.createElement('span'); nt.className='newtag'; nt.textContent=RF[lang].isnew; th.appendChild(nt); }
       if(a.img){
         var im=document.createElement('img'); im.src=a.img; im.alt=a.title||''; im.loading='lazy';
         im.onerror=function(){im.remove(); th.appendChild(ph())};
@@ -417,24 +457,56 @@ var READ_EN='Read the article';
       var o={}; head.forEach(function(k,idx){o[k]=(r[idx]||'').trim()}); return o;
     }).filter(function(o){return o.title||o.url});
   }
-  function bust(u){ var d=new Date(),v=''+d.getFullYear()+d.getMonth()+d.getDate()+d.getHours(); return u+(u.indexOf('?')>-1?'&':'?')+'v='+v; }
-  function load(){
-    /* Priority: Google Sheet CSV, then JSON feed, then the inline ARTICLES list.
-       Cache-busts hourly so new sheet rows appear on the next visit. */
-    if(CONFIG.sheetUrl){
-      fetch(bust(CONFIG.sheetUrl)).then(function(r){return r.text()})
-        .then(function(t){var list=parseCSV(t); render(list.length?list:ARTICLES)})
-        .catch(function(){render(ARTICLES)});
-      return;
-    }
-    if(CONFIG.feedUrl){
-      fetch(bust(CONFIG.feedUrl)).then(function(r){return r.json()})
-        .then(function(j){render(Array.isArray(j)?j:(j.articles||ARTICLES))})
-        .catch(function(){render(ARTICLES)});
-      return;
-    }
-    render(ARTICLES);
+  /* Merge: feed rows + inline ARTICLES, de-duplicated by link (feed wins) */
+  function merge(feed){
+    var seen={}, out=[];
+    (feed||[]).concat(ARTICLES).forEach(function(a){
+      var k=(a.url||a.title||'').replace(/\/+$/,'');
+      if(k && !seen[k]){ seen[k]=1; out.push(a); }
+    });
+    return out;
   }
+  function fetchFeed(fresh){
+    /* fresh=true (button): bypass every cache. Otherwise cache-bust hourly. */
+    var d=new Date(), v=fresh?String(d.getTime()):(''+d.getFullYear()+d.getMonth()+d.getDate()+d.getHours());
+    function u(x){return x+(x.indexOf('?')>-1?'&':'?')+'v='+v}
+    var opt=fresh?{cache:'no-store'}:{};
+    if(CONFIG.feedUrl)  return fetch(u(CONFIG.feedUrl)+(fresh?'&sync=1':''),opt).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){return Array.isArray(j)?j:(j.articles||[])});
+    if(CONFIG.sheetUrl) return fetch(u(CONFIG.sheetUrl),opt).then(function(r){if(!r.ok)throw 0;return r.text()}).then(parseCSV);
+    return null;
+  }
+  function status(kind,msg){
+    var s=$('#rstatus'); s.className='rstatus'+(kind?' '+kind:'');
+    s.innerHTML=msg?'<span class="dot"></span><span></span>':''; if(msg) s.lastChild.textContent=msg;
+  }
+  function stamp(){
+    try{return new Intl.DateTimeFormat(lang==='ar'?'ar-AE':'en-GB',{hour:'2-digit',minute:'2-digit'}).format(new Date())}catch(e){return ''}
+  }
+  function load(fresh){
+    var p=fetchFeed(fresh);
+    if(!p){ CURRENT=merge([]); render(CURRENT); if(fresh) status('ok',RF[lang].upto+' · '+RF[lang].count.replace('{n}',CURRENT.length)); return Promise.resolve(); }
+    var before={}; CURRENT.forEach(function(a){before[a.url]=1});
+    return p.then(function(list){
+      var next=merge(list), added=0; NEWURLS={};
+      if(fresh && CURRENT.length){ next.forEach(function(a){ if(a.url && !before[a.url]){ NEWURLS[a.url]=1; added++; } }); }
+      CURRENT=next; render(CURRENT);
+      if(fresh){
+        status('ok',(added?RF[lang].fresh.replace('{n}',added):RF[lang].upto)+' · '+RF[lang].at.replace('{t}',stamp()));
+      }
+    }).catch(function(){
+      if(!CURRENT.length){ CURRENT=merge([]); render(CURRENT); }
+      if(fresh) status('warn',RF[lang].fail);
+    });
+  }
+  $('#refreshBtn').addEventListener('click',function(){
+    var b=this; if(b.disabled) return;
+    b.disabled=true; b.classList.add('busy'); status('',RF[lang].busy);
+    var t0=Date.now();
+    load(true).then(function(){
+      /* keep the spinner visible briefly so the click feels acknowledged */
+      setTimeout(function(){b.disabled=false; b.classList.remove('busy')}, Math.max(0,600-(Date.now()-t0)));
+    });
+  });
 
   /* ---------- language ---------- */
   function setLang(l){
@@ -451,7 +523,7 @@ var READ_EN='Read the article';
     $('meta[name=description]').setAttribute('content',(lang==='ar')?I18N.meta_desc:META_EN.desc);
     $('#langLabel').textContent=(lang==='ar')?'English':'العربية';
     $('#langBtn').setAttribute('aria-label',(lang==='ar')?'Switch to English':'التبديل إلى العربية');
-    wireWA(); store('lang',lang); load();
+    wireWA(); store('lang',lang); if(CURRENT.length){render(CURRENT); status('','');} else load(false);
   }
   function detectLang(){
     var q=(location.search.match(/[?&]lang=(ar|en)/i)||[])[1]; if(q) return q.toLowerCase();
@@ -460,6 +532,9 @@ var READ_EN='Read the article';
     return (/^ar/i.test(navigator.language||''))?'ar':'en';
   }
   $('#langBtn').addEventListener('click',function(){setLang(lang==='ar'?'en':'ar')});
+
+  /* If a widget was pasted into the slot, show it instead of the manual cards */
+  if($('#embedSlot').children.length) document.body.classList.add('has-embed');
 
   applyConfig(); setLang(detectLang());
 })();
